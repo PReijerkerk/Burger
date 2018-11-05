@@ -1,26 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Burgers On My Mind!</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+    <title>Eat The Burger</title>
 </head>
+
 <body>
-    <img src="assets/images/burger.jpeg" width="300px" height="300px" id="burgerLogo">
+    <img src="/assets/images/burger.jpeg" width="400px" id="logo_burger">
 
-    {{{ body }}}
+    <h1>Eat-The-Burger!</h1>
 
-    <div class="footer">
-            <div class="container">
-                <p>
-                    <a href="https://github.com/PReijerkerk/Burger">GitHub Repo</a>
-                </p>
+<main>
+    <script id="handlebars-template" type="text/x-handlebars-template">
+    <div class="container">
+        <div class="row">
+            <div class="col s6">
+                {{#each burgers}}
+                    {{#unless this.devoured}}
+                        <div>
+                            <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                                <button type="submit" class="burgersAvailable"> {{this.burger_name}}</button>
+                                </form>
+                        </div>
+                    {{/unless}}
+                {{/each}}
             </div>
         </div>
+
+        <div class="col s6">
+            {{#each burgers}}
+                {{#if this.devoured}}
+                    <div class="burgersEaten">
+                        <div>
+                            {{this.burger_name}}
+                        </div>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</main>
+
+
+<h2>Add Your Burger Option</h2>
+
+<div class="row">
+    <div class="col s12">
+        <form action="/burgers" method="POST">
+            <input type="text" id="name" name="burger_name" placeholder="Your Burger Selection">
+            <button type="submit" class="addBurgerButton">Add The Burger</button>
+        </form>
+    </div>
+</div>
+
+</script>
+
+    <footer class="burgerFooter">
+        <div class="footer-copyright">
+            <div class="container">
+                <a href="https://github.com/PReijerkerk/Burger">Github Repo</a>
+            </div>
+        </div>
+    </footer>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
