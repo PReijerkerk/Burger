@@ -4,7 +4,7 @@
 
 *Eat-The-Burger* is a resturant app utlizing  
 
-The application is implemented using a [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/) server on the back end and the [Bootstrap](https://getbootstrap.com/) CSS framework on the front end.
+The application is implemented using a [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/) server on the back end and the [Materialize](https://materializecss.com/) CSS framework on the front end.
 
 ## Demo
 	
